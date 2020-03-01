@@ -243,7 +243,7 @@ it('Should return \'thirty nine\' when 39 given', () => {
   assert.equal(readable, 'thirty nine');
 });
 
-it('Should return \'forty\' when 40 given', () => {
+it.only('Should return \'forty\' when 40 given', () => {
   const readable = toReadable(40);
 
   assert.equal(readable, 'forty');
