@@ -1,6 +1,6 @@
 module.exports = function toReadable (number) {
     const NUMBERS = {
-        0 : 'zero',
+        0 : ' ',
         1 : 'one',
         2 : 'two',
         3 : 'three',
@@ -30,15 +30,19 @@ module.exports = function toReadable (number) {
         90 : 'ninety',
     };
 
-    if (number>=0 && number<=20) {
+    if (number == 0) {
+        return 'zero'
+    }
+
+    if (number>0 && number<=20) {
         return NUMBERS[number] 
     };
 
     if (number>20 && number<=99) {
-        return (`${NUMBERS[Math.floor(number/10)*10]}` + ` ` + `${NUMBERS[Math.floor(number%10)]}`);
+        return (`${NUMBERS[Math.floor(number/10)*10]}`  + ` ${NUMBERS[Math.floor(number%10)]}`).trim();
     };
 
     if (number>=100 && number<1000) {
-        return (``)
+        return (`${NUMBERS[Math.floor(number/100)]}` + ' hundred' + ` ${NUMBERS[Math.floor(number%100/10)*10]}` +  ` ${NUMBERS[Math.floor(number%10)]}`).trim()
     }
 };
