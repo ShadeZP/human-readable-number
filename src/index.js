@@ -43,6 +43,10 @@ module.exports = function toReadable (number) {
     };
 
     if (number>=100 && number<1000) {
-        return (`${NUMBERS[Math.floor(number/100)]}` + ' hundred' + ` ${NUMBERS[Math.floor(number%100/10)*10]}` +  ` ${NUMBERS[Math.floor(number%10)]}`).trim()
+        if ((number-Math.floor(number/100)*100)<20) {
+            return (`${NUMBERS[Math.floor(number/100)]}`+ ` hundred` + ` ${NUMBERS[number-Math.floor(number/100)*100]}`).trim();
+        } else{
+            return (`${NUMBERS[Math.floor(number/100)]}` + ' hundred' + ` ${NUMBERS[Math.floor(number%100/10)*10]}` +  ` ${NUMBERS[Math.floor(number%10)]}`).trim()
+        };
     }
 };
